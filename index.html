@@ -1,0 +1,632 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Skill Development Programs — Registration | UME Preschool &amp; Daycare</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;600;700&family=Noto+Sans+Tamil:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --navy:#0b3d66;
+    --blue:#1565c0;
+    --blue-light:#e8f1fb;
+    --gold:#c9962c;
+    --gold-light:#fbf3e2;
+    --saffron:#ff9933;
+    --green:#138808;
+    --ink:#1c2733;
+    --ink-soft:#5a6b7a;
+    --border:#d5e0ea;
+    --success-bg:#e6f6ec;
+    --success-border:#8fd6ab;
+    --success-ink:#1c7a3d;
+  }
+
+  *{box-sizing:border-box;}
+
+  body{
+    margin:0;
+    font-family:'Noto Sans','Noto Sans Tamil',sans-serif;
+    color:var(--ink);
+    background:linear-gradient(180deg,#f4f8fc 0%, #eef3f8 100%);
+    padding:0 0 60px;
+  }
+
+  .ta{
+    font-family:'Noto Sans Tamil','Noto Sans',sans-serif;
+    display:block;
+    font-size:0.86em;
+    color:var(--ink-soft);
+    font-weight:500;
+    margin-top:2px;
+  }
+
+  header{
+    background:linear-gradient(135deg, var(--navy), var(--blue));
+    color:#fff;
+    padding:30px 20px 28px;
+    text-align:center;
+    position:relative;
+    overflow:hidden;
+  }
+  header::after{
+    content:"";
+    position:absolute;
+    left:0; right:0; bottom:0;
+    height:6px;
+    background:linear-gradient(90deg, var(--saffron) 0 33%, #fff 33% 66%, var(--green) 66% 100%);
+  }
+  header .orgs{
+    font-size:12.5px;
+    letter-spacing:0.3px;
+    opacity:0.9;
+    margin:0 0 10px;
+    font-weight:600;
+  }
+  header h1{
+    margin:0 0 6px;
+    font-size:clamp(22px,4.5vw,30px);
+    font-weight:700;
+    line-height:1.3;
+  }
+  header .h1-ta{
+    display:block;
+    font-family:'Noto Sans Tamil',sans-serif;
+    font-size:0.72em;
+    font-weight:600;
+    opacity:0.92;
+    margin-top:4px;
+  }
+  header p.meta{
+    margin:14px 0 0;
+    font-size:15.5px;
+    opacity:0.95;
+  }
+  header p.meta .ta{
+    color:#eaf2fb;
+    opacity:0.9;
+  }
+  header p.meta b{ font-weight:700; }
+
+  .wrap{
+    max-width:640px;
+    margin:0 auto;
+    padding:0 18px;
+  }
+
+  .card{
+    background:#fff;
+    border-radius:18px;
+    box-shadow:0 10px 30px rgba(11,61,102,0.10);
+    border:1px solid var(--border);
+    margin-top:-26px;
+    padding:30px 26px 26px;
+    position:relative;
+    z-index:2;
+  }
+
+  .field{ margin-bottom:22px; }
+
+  .field label{
+    display:block;
+    font-weight:700;
+    font-size:15.5px;
+    color:var(--navy);
+    margin-bottom:8px;
+  }
+  .field label .req{ color:#d64545; margin-left:2px; }
+  .field label .opt{ color:var(--ink-soft); font-weight:600; font-size:0.8em; margin-left:4px; }
+
+  input[type="text"],
+  input[type="tel"],
+  input[type="number"],
+  input[type="email"],
+  textarea{
+    width:100%;
+    padding:13px 14px;
+    font-family:inherit;
+    font-size:15.5px;
+    color:var(--ink);
+    background:#fbfdff;
+    border:1.5px solid var(--border);
+    border-radius:12px;
+    outline:none;
+    transition:border-color .18s ease, box-shadow .18s ease;
+  }
+  textarea{ min-height:90px; resize:vertical; line-height:1.5; }
+
+  input:focus, textarea:focus{
+    border-color:var(--blue);
+    box-shadow:0 0 0 4px rgba(21,101,192,0.12);
+    background:#fff;
+  }
+
+  .hint{
+    font-size:12.5px;
+    color:var(--ink-soft);
+    margin-top:6px;
+  }
+
+  .display-box{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:14px;
+    background:var(--gold-light);
+    border:1.5px dashed #e0c07f;
+    border-radius:12px;
+    padding:14px 16px;
+  }
+  .display-box .value{
+    font-size:20px;
+    font-weight:700;
+    color:var(--navy);
+    white-space:nowrap;
+  }
+
+  .section-heading{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    margin:32px 0 14px;
+  }
+  .section-heading::before,
+  .section-heading::after{
+    content:"";
+    flex:1;
+    height:1px;
+    background:var(--border);
+  }
+  .section-heading span{
+    font-weight:700;
+    font-size:13.5px;
+    letter-spacing:0.6px;
+    text-transform:uppercase;
+    color:var(--gold);
+    white-space:nowrap;
+  }
+  .section-heading span .ta{
+    text-transform:none;
+    letter-spacing:0;
+    font-size:0.82em;
+    color:var(--ink-soft);
+  }
+
+  /* ---- Program checkbox "boxes" ---- */
+  .program-group{
+    display:flex;
+    flex-direction:column;
+    gap:12px;
+  }
+  .program-option{
+    display:flex;
+    align-items:flex-start;
+    gap:12px;
+    padding:14px 16px;
+    background:#fbfdff;
+    border:1.5px solid var(--border);
+    border-radius:14px;
+    cursor:pointer;
+    transition:border-color .18s ease, background .18s ease, box-shadow .18s ease;
+  }
+  .program-option:has(input:checked){
+    border-color:var(--blue);
+    background:var(--blue-light);
+    box-shadow:0 0 0 3px rgba(21,101,192,0.10);
+  }
+  .program-option input[type="checkbox"]{
+    width:19px;
+    height:19px;
+    margin-top:2px;
+    accent-color:var(--blue);
+    cursor:pointer;
+    flex-shrink:0;
+  }
+  .program-option .program-text{
+    flex:1;
+  }
+  .program-option .program-name{
+    font-weight:700;
+    font-size:15.5px;
+    color:var(--ink);
+    display:block;
+  }
+  .program-option .program-name .ta{
+    margin-top:1px;
+    font-weight:600;
+  }
+  .program-option .program-meta{
+    display:flex;
+    flex-wrap:wrap;
+    gap:6px 14px;
+    margin-top:6px;
+    font-size:13.5px;
+    color:var(--ink-soft);
+    font-weight:600;
+  }
+  .program-option .program-meta .cost{
+    color:var(--navy);
+    font-weight:700;
+  }
+  .program-option .program-note{
+    margin-top:6px;
+    font-size:12.5px;
+    font-style:italic;
+    color:var(--gold);
+  }
+  .program-option .program-note .ta{
+    font-style:italic;
+    color:var(--gold);
+    font-size:1em;
+  }
+
+  .total-box .value{ color:var(--navy); font-size:22px; }
+
+  .save-btn{
+    width:100%;
+    margin-top:22px;
+    padding:16px;
+    border:none;
+    border-radius:14px;
+    font-family:inherit;
+    font-weight:700;
+    font-size:17px;
+    color:#fff;
+    background:linear-gradient(120deg, var(--blue), var(--navy));
+    cursor:pointer;
+    box-shadow:0 10px 24px rgba(21,101,192,0.30);
+    transition:transform .15s ease, box-shadow .15s ease, opacity .15s ease;
+  }
+  .save-btn:hover{ transform:translateY(-2px); box-shadow:0 14px 28px rgba(21,101,192,0.36); }
+  .save-btn:disabled{ opacity:0.6; cursor:not-allowed; transform:none; }
+  .save-btn .btn-ta{
+    display:block;
+    font-family:'Noto Sans Tamil',sans-serif;
+    font-size:0.68em;
+    font-weight:600;
+    opacity:0.9;
+    margin-top:2px;
+  }
+
+  .status-msg{
+    display:none;
+    margin-top:18px;
+    padding:16px 18px;
+    border-radius:14px;
+    text-align:center;
+  }
+  .status-msg.show{ display:block; }
+  .status-msg.success{
+    background:var(--success-bg);
+    border:1px solid var(--success-border);
+    color:var(--success-ink);
+  }
+  .status-msg.error{
+    background:#fdecec;
+    border:1px solid #f3b7b7;
+    color:#a3372c;
+  }
+  .status-msg .line1{ font-weight:700; font-size:16px; }
+  .status-msg .line1-ta{
+    display:block;
+    font-family:'Noto Sans Tamil',sans-serif;
+    font-weight:600;
+    font-size:0.85em;
+    margin-top:2px;
+  }
+
+  .footer-card{
+    max-width:640px;
+    margin:26px auto 0;
+    padding:0 18px;
+  }
+  .footer-inner{
+    background:#fff;
+    border:1px solid var(--border);
+    border-radius:16px;
+    padding:22px 24px;
+    text-align:center;
+  }
+  .footer-inner h3{
+    margin:0 0 10px;
+    font-size:16px;
+    color:var(--navy);
+  }
+  .footer-inner p{
+    margin:6px 0;
+    font-size:14.5px;
+    color:var(--ink-soft);
+    line-height:1.6;
+  }
+  .footer-inner a{
+    color:var(--blue);
+    font-weight:700;
+    text-decoration:none;
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <p class="orgs">UME Preschool &amp; Daycare in collaboration with Rotary Club</p>
+  <h1>
+    Skill Development Programs
+    <span class="h1-ta">திறன் மேம்பாட்டு திட்டங்கள்</span>
+  </h1>
+  <p class="meta">
+    <b>Empowering Skills, Enabling Livelihoods</b> &nbsp;|&nbsp; August 2026
+    <span class="ta">திறன்களை மேம்படுத்துதல், வாழ்வாதாரத்தை உறுதி செய்தல் &nbsp;|&nbsp; ஆகஸ்ட் 2026</span>
+  </p>
+</header>
+
+<div class="wrap">
+  <div class="card">
+    <form id="regForm" novalidate>
+
+      <div class="field">
+        <label for="fullName">Name<span class="req">*</span>
+          <span class="ta">பெயர்</span>
+        </label>
+        <input type="text" id="fullName" name="fullName" placeholder="e.g. Meena Krishnan" autocomplete="off" required>
+      </div>
+
+      <div class="field">
+        <label for="age">Age<span class="req">*</span>
+          <span class="ta">வயது</span>
+        </label>
+        <input type="number" id="age" name="age" placeholder="e.g. 28" min="1" max="120" inputmode="numeric" required>
+      </div>
+
+      <div class="field">
+        <label for="contact">Phone Number<span class="req">*</span>
+          <span class="ta">தொலைபேசி எண்</span>
+        </label>
+        <input type="tel" id="contact" name="contact" placeholder="10-digit mobile number" inputmode="numeric" maxlength="10" autocomplete="off" required>
+        <div class="hint">Exactly 10 digits, numbers only</div>
+      </div>
+
+      <div class="field">
+        <label for="email">Email<span class="opt">(optional)</span>
+          <span class="ta">மின்னஞ்சல் (விருப்பத்தேர்வு)</span>
+        </label>
+        <input type="email" id="email" name="email" placeholder="e.g. name@email.com" autocomplete="off">
+      </div>
+
+      <!-- ================= PROGRAM SELECTION ================= -->
+      <div class="field">
+        <label>Select Program(s) — you may choose more than one
+          <span class="ta">திட்டங்களைத் தேர்ந்தெடுக்கவும் — ஒன்றுக்கு மேற்பட்டவற்றைத் தேர்வு செய்யலாம்</span>
+        </label>
+
+        <div class="section-heading"><span>Short Term Workshops <span class="ta">குறுகிய கால பயிலரங்குகள்</span></span></div>
+        <div class="program-group" id="workshopGroup"></div>
+
+
+      </div>
+
+      <div class="field">
+        <label>Estimated Total
+          <span class="ta">மதிப்பிடப்பட்ட மொத்த தொகை</span>
+        </label>
+        <div class="display-box total-box">
+          <span class="fee-label">Based on selected program(s)<span class="ta">தேர்ந்தெடுக்கப்பட்ட திட்டங்களின் அடிப்படையில்</span></span>
+          <span class="value" id="totalDisplay">₹0</span>
+        </div>
+      </div>
+
+      <button type="submit" class="save-btn" id="saveBtn">
+        Submit Registration
+        <span class="btn-ta">பதிவைச் சமர்ப்பிக்கவும்</span>
+      </button>
+
+      <div class="status-msg" id="statusMsg"></div>
+    </form>
+  </div>
+</div>
+
+
+
+<script>
+  /* =========================================================
+     1. PROGRAM LIST — EDIT ME
+     ---------------------------------------------------------
+     This is the ONLY place you need to touch to add, remove,
+     rename or re-price a program. Each entry becomes one
+     checkbox box on the form automatically.
+
+     Fields:
+       id       - short unique key (used internally, no spaces)
+       group    - "workshopGroup" or "courseGroup" (which section
+                  it renders under; add a new <div id="..."> in
+                  the HTML above if you want a third section)
+       en       - English name
+       ta       - Tamil name
+       duration - e.g. "2 Days" / "3 Months"
+       cost     - NUMBER only (used for the running total). This
+                  is the value shown after "₹" and sent to Google
+                  Forms as part of the option label.
+       note     - optional bilingual extra line, e.g. venue or
+                  "Placement Assured". Leave as "" to omit.
+       noteTa   - Tamil version of note (optional)
+     ========================================================= */
+  const PROGRAMS = [
+    {
+      id: "jasmine",
+      group: "workshopGroup",
+      en: "Jasmine Buds & Blossom Craft",
+      ta: "மல்லிகை மொட்டு & மலர் கலை",
+      duration: "2 Days",
+      cost: 1200,
+      note: "",
+      noteTa: ""
+    },
+    {
+      id: "jewellery",
+      group: "workshopGroup",
+      en: "Artificial Jewellery Making",
+      ta: "செயற்கை நகை தயாரிப்பு",
+      duration: "2 Days",
+      cost: 800,
+      note: "",
+      noteTa: ""
+    },
+    {
+      id: "tanjore",
+      group: "workshopGroup",
+      en: "Tanjore Art on Blouses",
+      ta: "ரவிக்கைகளில் தஞ்சாவூர் ஓவியம்",
+      duration: "2 Days",
+      cost: 800,
+      note: "",
+      noteTa: ""
+    },
+    {
+      id: "clothpad",
+      group: "workshopGroup",
+      en: "Reusable Cloth Pad Making",
+      ta: "மறுபயன்பாட்டு துணி பேட் தயாரிப்பு",
+      duration: "2 Days",
+      cost: 600,
+      note: "Take Home Your Own Pad",
+      noteTa: "உங்கள் சொந்த பேட்டை வீட்டிற்கு எடுத்துச் செல்லுங்கள்"
+    }
+  ];
+
+  /* =========================================================
+     2. GOOGLE FORM CONNECTION — EDIT ME
+     ---------------------------------------------------------
+     1. Create a Google Form with these questions, in this order:
+          - Name              (Short answer)
+          - Age               (Short answer)
+          - Phone Number      (Short answer)
+          - Email             (Short answer, marked NOT required)
+          - Programs Selected (Checkboxes) — add one option per
+            program above, using the exact same text as its
+            "en" value (the code below sends "Name (Duration) -
+            ₹Cost" as the option text, so either match that
+            exactly in your Google Form options, or simplify by
+            using just the "en" name in both places).
+     2. Open the Google Form, click the three-dot menu ⋮ →
+        "Get pre-filled link", fill dummy answers, and generate
+        the link. Each field's entry.XXXXXXXXX ID is in that URL.
+     3. Replace GOOGLE_FORM_ID and every entry.XXXXXXXXX below.
+     ========================================================= */
+  // NOTE: submissions MUST post to .../formResponse, not .../viewform.
+  const GOOGLE_FORM_ID = "1FAIpQLSfagqB24pSA6apl2MzEtJFeJrOwi6j5PxakV4w2CYFvMXPWRg";
+  const GOOGLE_FORM_ACTION = `https://docs.google.com/forms/d/e/${GOOGLE_FORM_ID}/formResponse`;
+
+ const ENTRY_IDS = {
+  fullName: "entry.1555013881",
+  age:      "entry.966087729",
+  contact:  "entry.1091115514",
+  email:    "entry.2013289318",
+  programs: "entry.280063102" // same entry ID repeated for each checked option
+  };
+
+  // ---------------------------------------------------------
+  // Render program checkboxes from the PROGRAMS array above.
+  // ---------------------------------------------------------
+  function renderPrograms() {
+    const containers = {};
+    PROGRAMS.forEach(p => {
+      if (!containers[p.group]) {
+        containers[p.group] = document.getElementById(p.group);
+      }
+      const container = containers[p.group];
+      if (!container) return;
+
+      const label = document.createElement('label');
+      label.className = 'program-option';
+
+      const noteHtml = p.note
+        ? `<div class="program-note">${p.note}${p.noteTa ? `<span class="ta">${p.noteTa}</span>` : ''}</div>`
+        : '';
+
+      label.innerHTML = `
+        <input type="checkbox" name="programs" value="${p.en} (${p.duration}) - ₹${p.cost.toLocaleString('en-IN')}" data-cost="${p.cost}" data-en="${p.en}">
+        <span class="program-text">
+          <span class="program-name">${p.en}<span class="ta">${p.ta}</span></span>
+          <span class="program-meta">
+            <span>${p.duration}</span>
+            <span class="cost">₹${p.cost.toLocaleString('en-IN')} / Person</span>
+          </span>
+          ${noteHtml}
+        </span>`;
+      container.appendChild(label);
+    });
+  }
+  renderPrograms();
+
+  const form = document.getElementById('regForm');
+  const contact = document.getElementById('contact');
+  const saveBtn = document.getElementById('saveBtn');
+  const statusMsg = document.getElementById('statusMsg');
+  const totalDisplay = document.getElementById('totalDisplay');
+
+  contact.addEventListener('input', () => {
+    contact.value = contact.value.replace(/[^0-9]/g, '').slice(0, 10);
+  });
+
+  function updateTotal() {
+    const checked = form.querySelectorAll('input[name="programs"]:checked');
+    let total = 0;
+    checked.forEach(c => total += Number(c.dataset.cost || 0));
+    totalDisplay.textContent = "₹" + total.toLocaleString('en-IN');
+  }
+  form.addEventListener('change', (e) => {
+    if (e.target.name === 'programs') updateTotal();
+  });
+
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+
+    const checkedPrograms = form.querySelectorAll('input[name="programs"]:checked');
+
+    if (!form.fullName.value.trim() || !form.age.value.trim() || contact.value.length !== 10) {
+      if (!form.fullName.value.trim()) { form.fullName.focus(); }
+      else if (!form.age.value.trim()) { form.age.focus(); }
+      else if (contact.value.length !== 10) { contact.focus(); }
+      return;
+    }
+
+    if (checkedPrograms.length === 0) {
+      statusMsg.className = "status-msg show error";
+      statusMsg.innerHTML = '<div class="line1">Please select at least one program.<span class="line1-ta">தயவுசெய்து குறைந்தது ஒரு திட்டத்தையாவது தேர்ந்தெடுக்கவும்.</span></div>';
+      return;
+    }
+
+    saveBtn.disabled = true;
+    saveBtn.textContent = "Submitting...";
+
+    const payload = new FormData();
+    payload.append(ENTRY_IDS.fullName, form.fullName.value.trim());
+    payload.append(ENTRY_IDS.age, form.age.value.trim());
+    payload.append(ENTRY_IDS.contact, contact.value);
+    payload.append(ENTRY_IDS.email, form.email.value.trim());
+    checkedPrograms.forEach(c => payload.append(ENTRY_IDS.programs, c.value));
+
+    try {
+      await fetch(GOOGLE_FORM_ACTION, { method: "POST", mode: "no-cors", body: payload });
+
+      statusMsg.className = "status-msg show success";
+      statusMsg.innerHTML =
+        '<div class="line1">Your registration has been submitted successfully!' +
+        '<span class="line1-ta">உங்கள் பதிவு வெற்றிகரமாக சமர்ப்பிக்கப்பட்டது!</span></div>';
+
+      form.reset();
+      updateTotal();
+      saveBtn.textContent = "Submit Registration";
+      saveBtn.disabled = false;
+    } catch (err) {
+      statusMsg.className = "status-msg show error";
+      statusMsg.innerHTML =
+        '<div class="line1">Something went wrong. Please try again.' +
+        '<span class="line1-ta">ஏதோ தவறு நடந்துள்ளது. மீண்டும் முயற்சிக்கவும்.</span></div>';
+      saveBtn.textContent = "Submit Registration";
+      saveBtn.disabled = false;
+    }
+  });
+</script>
+</body>
+</html>
